@@ -1,13 +1,12 @@
 const timeConversion = (s) => {
-    let time = s.slice(8,10);
-    let seconds = s.slice(6,8);
-    let hours = s.slice(0,2);
-    let minutes = s.slice(3,5);
-
-    time === "AM" && hours === "12" ? hours = "00" : hours
-    time === "PM" && hours < 12 ? hours = parseInt(hours) + 12 : hours;
+    const formatTime = s.slice(8,10);
+    let hours = Number(s.slice(0,2));
+    const minutesAndSeconds = s.slice(2,-2);
+    
+    formatTime === "AM" && hours === "12" ? hours = "00" : hours
+    formatTime === "PM" && hours < 12 ? hours = hours + 12 : hours;
  
-    return hours + ":" + ":" +minutes + ":" + seconds;
+    return hours+minutesAndSeconds;
 }
 
-console.log(timeConversion("10:45:00PM"));
+console.log(timeConversion("01:05:00PM"));
